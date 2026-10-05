@@ -2,5 +2,17 @@ import { Categoria, CATEGORIAS, Despesa } from "./tipos";
 import { maiorDespesa, totalGasto } from "./despesas";
 
 export function descricaoCategoria(categoria: Categoria): string {
-  throw new Error("não implementado");
+  switch (categoria) {
+    case "alimentação":
+      return "Alimentação";
+
+    case "transporte":
+      return "Transporte";
+
+    case "lazer":
+      return "Lazer";
+
+    case "moradia":
+      return "Moradia";
+  }
 }
