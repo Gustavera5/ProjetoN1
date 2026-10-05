@@ -43,3 +43,45 @@ export function matrizCategoriaMes(despesas: Despesa[]): number[][] {
 
   return matriz;
 }
+
+export function formatarRelatorio(despesas: Despesa[]): string {
+  const matriz = matrizCategoriaMes(despesas);
+
+  let relatorio = "RELATÓRIO DE GASTOS\n";
+  relatorio += "===================\n";
+
+  for (let i = 0; i < CATEGORIAS.length; i++) {
+    let totalCategoria = 0;
+
+    for (let mes = 0; mes < 12; mes++) {
+      totalCategoria += matriz[i][mes];
+    }
+
+    const nome = descricaoCategoria(CATEGORIAS[i]);
+
+    relatorio += nome.padEnd(15, " ");
+    relatorio += " R$ ";
+    relatorio += totalCategoria.toFixed(2);
+    relatorio += "\n";
+  }
+
+  relatorio += "-------------------\n";
+
+  relatorio += "TOTAL GERAL".padEnd(15, " ");
+  relatorio += " R$ ";
+  relatorio += totalGasto(despesas).toFixed(2);
+  relatorio += "\n";
+
+  const maior = maiorDespesa(despesas);
+
+  if (maior === undefined) {
+    relatorio += "MAIOR DESPESA: nenhuma";
+  } else {
+    relatorio += "MAIOR DESPESA: ";
+    relatorio += maior.descricao;
+    relatorio += " - R$ ";
+    relatorio += maior.valor.toFixed(2);
+  }
+
+  return relatorio.toUpperCase();
+}
