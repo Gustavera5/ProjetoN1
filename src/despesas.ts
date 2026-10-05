@@ -31,3 +31,7 @@ export function despesasDaCategoria(
     (despesa) => despesa.categoria === categoria
   );
 }
+
+export function totalGasto(despesas: Despesa[]): number {
+  throw new Error("não implementado");
+}

@@ -100,3 +100,13 @@ describe("despesasDaCategoria", () => {
     expect(resultado).toEqual([]);
   });
 });
+
+describe("totalGasto", () => {
+  it("soma os valores das despesas", () => {
+    expect(totalGasto(despesas)).toBe(100);
+  });
+
+  it("retorna zero para uma lista vazia", () => {
+    expect(totalGasto([])).toBe(0);
+  });
+});
