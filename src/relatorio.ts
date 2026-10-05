@@ -17,8 +17,29 @@ export function descricaoCategoria(categoria: Categoria): string {
   }
 }
 
-export function matrizCategoriaMes(
-  despesas: Despesa[]
-): number[][] {
-  throw new Error("não implementado");
+export function matrizCategoriaMes(despesas: Despesa[]): number[][] {
+  const matriz: number[][] = [];
+
+  for (let i = 0; i < CATEGORIAS.length; i++) {
+    const linha: number[] = [];
+
+    for (let mes = 1; mes <= 12; mes++) {
+      let total = 0;
+
+      for (let j = 0; j < despesas.length; j++) {
+        if (
+          despesas[j].categoria === CATEGORIAS[i] &&
+          despesas[j].mes === mes
+        ) {
+          total += despesas[j].valor;
+        }
+      }
+
+      linha.push(total);
+    }
+
+    matriz.push(linha);
+  }
+
+  return matriz;
 }
