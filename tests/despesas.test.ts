@@ -110,3 +110,15 @@ describe("totalGasto", () => {
     expect(totalGasto([])).toBe(0);
   });
 });
+
+describe("maiorDespesa", () => {
+  it("retorna a despesa de maior valor", () => {
+    const resultado = maiorDespesa(despesas);
+
+    expect(resultado?.id).toBe(1);
+  });
+
+  it("retorna undefined quando a lista está vazia", () => {
+    expect(maiorDespesa([])).toBeUndefined();
+  });
+});
