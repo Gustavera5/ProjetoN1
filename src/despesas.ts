@@ -15,3 +15,10 @@ if (nova.mes < 1 || nova.mes > 12) {
 // Retorna um novo array para não alterar o array original.
 return [...despesas, nova];
 }
+
+export function removerDespesa(
+  despesas: Despesa[],
+  id: number
+): Despesa[] {
+  throw new Error("não implementado");
+}

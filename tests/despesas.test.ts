@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { adicionarDespesa } from "../src/despesas";
-import { Despesa } from "../src/tipos";
-
+import {
+  adicionarDespesa,
+  removerDespesa
+} from "../src/despesas";
 const despesas: Despesa[] = [
   {
     id: 1,
@@ -62,5 +63,20 @@ describe("adicionarDespesa", () => {
     };
 
     expect(() => adicionarDespesa(despesas, nova)).toThrow();
+  });
+});
+
+describe("removerDespesa", () => {
+  it("remove uma despesa pelo id", () => {
+    const resultado = removerDespesa(despesas, 1);
+
+    expect(resultado).toHaveLength(0);
+  });
+
+  it("retorna uma cópia quando o id não existe", () => {
+    const resultado = removerDespesa(despesas, 99);
+
+    expect(resultado).toEqual(despesas);
+    expect(resultado).not.toBe(despesas);
   });
 });
