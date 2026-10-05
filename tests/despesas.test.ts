@@ -80,3 +80,23 @@ describe("removerDespesa", () => {
     expect(resultado).not.toBe(despesas);
   });
 });
+
+describe("despesasDaCategoria", () => {
+  it("retorna despesas da categoria", () => {
+    const resultado = despesasDaCategoria(
+      despesas,
+      "alimentação"
+    );
+
+    expect(resultado).toHaveLength(1);
+  });
+
+  it("retorna lista vazia quando não há despesas da categoria", () => {
+    const resultado = despesasDaCategoria(
+      despesas,
+      "moradia"
+    );
+
+    expect(resultado).toEqual([]);
+  });
+});
